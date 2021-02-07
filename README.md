@@ -59,5 +59,3 @@
 
 ### Association
 - belong_to :order
-
-
