@@ -1,16 +1,16 @@
 #テーブル設計
 
 ##users テーブル
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name         | string | null: false |
-| last_name          | string | null: false |
-| first_name_reading | string | null: false |
-| last_name_reading  | string | null: false |
-| birth_day          | date   | null: false |
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| nickname           | string | null: false                   |
+| email              | string | null: false, uniqueness: true |
+| encrypted_password | string | null: false                   |
+| first_name         | string | null: false                   |
+| last_name          | string | null: false                   |
+| first_name_reading | string | null: false                   |
+| last_name_reading  | string | null: false                   |
+| birth_day          | date   | null: false                   |
 
 ### Association
 - has_many :products
