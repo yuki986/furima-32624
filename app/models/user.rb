@@ -7,7 +7,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :email
     validates :encrypted_password, format: {
-      with: /\A[a-zA-Z0-9]+\z/, message: "半角英数字混合で入力してください。"
+      with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "半角英数字混合で入力してください。"
     }
     with_options format: {
       with: /\A[ぁ-んァ-ン一-龥々]/, message: "全角（漢字・ひらがな・カタカナ）で入力してください。"
