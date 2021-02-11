@@ -57,6 +57,12 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password 半角英数字混合で入力してください。")
       end
+      it "passwordが全角の場合は保存できない" do
+        @user.password = "ＡＡＡＡＡＡ"
+        @user.password_confirmation = "ＡＡＡＡＡＡ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Encrypted password 半角英数字混合で入力してください。")
+      end
       it "passwordとpassword_confirmationが不一致だと保存できない" do
         @user.password = "000000a"
         @user.password = "000000b"
@@ -106,7 +112,6 @@ RSpec.describe User, type: :model do
       it "birth_dayは空だと保存できない" do
         @user.birth_day = ""
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Birth day can't be blank")
       end
     end
