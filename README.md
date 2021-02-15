@@ -18,17 +18,17 @@
 
 
 ## products テーブル
-| Column           | Type      | Options          |
-| -----------------| --------- | ---------------- |
-| name             | string    | null: false      |
-| price            | integer   | null: false      |
-| detail           | text      | null: false      |
-| user             | reference | foreign_key:true |
-| category_id      | integer   | null: false      |
-| state_id         | integer   | null: false      |
-| delivery_fee_id  | integer   | null: false      |
-| area_id          | integer   | null: false      |
-| delivery_date_id | integer   | null: false      |
+| Column           | Type      | Options           |
+| -----------------| --------- | ----------------- |
+| name             | string    | null: false       |
+| price            | integer   | null: false       |
+| detail           | text      | null: false       |
+| user             | reference | foreign_key: true |
+| category_id      | integer   | null: false       |
+| state_id         | integer   | null: false       |
+| delivery_fee_id  | integer   | null: false       |
+| area_id          | integer   | null: false       |
+| delivery_date_id | integer   | null: false       |
 
 ### Association
 - belong_to :user
