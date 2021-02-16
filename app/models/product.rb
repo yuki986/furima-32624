@@ -1,7 +1,11 @@
 class Product < ApplicationRecord
   with_options presence: true do
     validates :name
-    validates :price
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, 
+      message: "設定範囲外です。300~9999999の範囲で設定してください。"}
+    validates :price, format: {
+      with: /\A[0-9]+\z/, message: "半角数字で入力してください"
+    }  
     validates :detail
   end
 
@@ -10,7 +14,7 @@ class Product < ApplicationRecord
     validates :status_id
     validates :delivery_fee_id
     validates :area_id
-    validates :delivary_date_id
+    validates :delivery_date_id
   end
 
   belongs_to :user
