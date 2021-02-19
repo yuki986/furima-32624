@@ -66,7 +66,6 @@ RSpec.describe User, type: :model do
       it "passwordとpassword_confirmationが不一致だと保存できない" do
         @user.password = "000000a"
         @user.password = "000000b"
-        @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it "first_nameが空だと保存できない" do

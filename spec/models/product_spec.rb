@@ -66,7 +66,6 @@ RSpec.describe Product, type: :model do
       it "delivery_dateのidが0の時は保存できない" do
         @product.delivery_date_id = 0
         @product.valid?
-        binding.pry
         expect(@product.errors.full_messages).to include("Delivery date must be other than 0")
       end
     end
