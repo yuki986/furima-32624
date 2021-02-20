@@ -28,10 +28,16 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Price can't be blank")
       end
-      it "priceが300~9999999円の範囲内でなければ保存できない" do
+      it "priceが300円以上でなければ保存できない" do
         @product.price = 200
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it "priceが9999999円以下出なければ保存できない" do
+        @product.price = 100000000
+        @product.valid?
+        binding.pry
+        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
       it "priceが半角数字でなければ保存できない" do
         @product.price ="aaaaa"
