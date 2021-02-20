@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :encrypted_password, format: {
+  validates :password, format: {
            with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "半角英数字混合で入力してください。"
          }
   with_options presence: true do
@@ -24,7 +24,6 @@ class User < ApplicationRecord
     validates :birth_day
   end
   
-
   has_many :products
-  has_many :orders
+  
 end

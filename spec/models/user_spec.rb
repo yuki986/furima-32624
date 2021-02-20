@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザーの新規登録の保存' do
     context '新規登録がうまく行く時' do
-      it "全てのvalidateどうりに登録する" do
+      it "全ての工程どうりに登録する" do
         expect(@user).to be_valid
       end
     end
@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
-      it 'emailが空だと保存できない' do
+      it "emailが空だと保存できない" do
         @user.email = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
@@ -66,7 +66,6 @@ RSpec.describe User, type: :model do
       it "passwordとpassword_confirmationが不一致だと保存できない" do
         @user.password = "000000a"
         @user.password = "000000b"
-        @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it "first_nameが空だと保存できない" do
