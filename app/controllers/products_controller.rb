@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-    # @products = Product.all
+    @products = Product.all
   end
 
   def new
@@ -24,3 +24,6 @@ class ProductsController < ApplicationController
       :area_id, :delivery_date_id, :image).merge(user_id: current_user.id)
   end
 end
+
+# @products = [a,a,a,a,]
+#  Product
