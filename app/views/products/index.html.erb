@@ -129,7 +129,7 @@
       <% if !Product.nil? %>
         <% @products.each do |product| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to product_path(product.id) , methed: :get do %>　<%# showページに飛ぶ%>
               <div class='item-img-content'>
                 <%= image_tag product.image, class: "item-img" %>
             <%# 商品が売れていればsold outを表示しましょう %>
