@@ -32,6 +32,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product(params[:id])
+    product.destroy
+  end
+
   def show
     
   end
