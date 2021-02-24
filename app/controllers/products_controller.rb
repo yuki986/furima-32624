@@ -19,8 +19,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @product.user.id
-      redirect_to products_path
+    if user_signed_in?
+      if current_user.id == @product.user.id
+        redirect_to edit_product
+      else
+        redirect_to products_path
+      end  
+    else
+      redirect_to new_user_session_path
     end
   end
 
