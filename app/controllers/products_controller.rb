@@ -33,8 +33,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product(params[:id])
-    product.destroy
+    @product = Product.find(params[:id])
+    @product.destroy
   end
 
   def show
@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+  
   def product_params
     params.require(:product).permit(:name, :price, :detail,:category_id,:status_id, :delivery_fee_id,
       :area_id, :delivery_date_id, :image).merge(user_id: current_user.id)
