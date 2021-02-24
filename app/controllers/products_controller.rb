@@ -34,7 +34,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    if @product.destroy
+      redirect_to products_path
+    end
   end
 
   def show
@@ -46,7 +48,7 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-  
+
   def product_params
     params.require(:product).permit(:name, :price, :detail,:category_id,:status_id, :delivery_fee_id,
       :area_id, :delivery_date_id, :image).merge(user_id: current_user.id)
