@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
       # orderのindexへ行く
       render action: :index
     end
-    redirect_to "/products/#{@order.product_id}"
   end
 
   private
