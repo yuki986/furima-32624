@@ -1,5 +1,5 @@
 class HowToBuy
-  include ActiveModel::Module 
+  include ActiveModel::Model
   # orderとadressのテーブルのカラム名を属性値として扱えるようにする。
   attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :user_id, :product
 
