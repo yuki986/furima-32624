@@ -3,13 +3,13 @@ class HowToBuy
   # orderとadressのテーブルのカラム名を属性値として扱えるようにする。
   attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :user_id, :product_id
 
-  # adressテーブルのバリデーションを持ってくる。
+  # addressテーブルのバリデーションを持ってくる。
   with_options presence: true do
     validates :postal_code, format: {
       with: /\A\d{3}[-]\d{4}\z/, message: "ハイフンありの7桁の郵便番号を入力してください"
     }
     validates :city, format: {
-      with: /\A[一-龥]+\z/, message: "漢字で市区町村を入力してください"
+      with: /\A[ぁ-んァ-ン一-龥]/, message: "全角ひらがな、カタカナ、漢字で市区町村を入力してください"
     }
     validates :house_number
     validates :phone_number, format: {
