@@ -5,9 +5,10 @@
   <title>Furima</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%# クレカの設定PAY.JPを行う時は以下のコードを記入する %>
   <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
   <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_pack_tag 'application' %>
+  <%= javascript_pack_tag 'application' %> <%# applicationにjavascriptの設定をする %>
 </head>
 
 <body>
