@@ -1,10 +1,11 @@
 class HowToBuy
   include ActiveModel::Model
   # orderとadressのテーブルのカラム名を属性値として扱えるようにする。
-  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :user_id, :product_id
+  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :user_id, :product_id, :token
 
   # addressテーブルのバリデーションを持ってくる。
   with_options presence: true do
+    validates :token
     validates :postal_code, format: {
       with: /\A\d{3}[-]\d{4}\z/, message: "ハイフンありの7桁の郵便番号を入力してください"
     }
