@@ -38,7 +38,7 @@ RSpec.describe HowToBuy, type: :model do
         @how_to_buy.valid?
         expect(@how_to_buy.errors.full_messages).to include("City 全角ひらがな、カタカナ、漢字で市区町村を入力してください")
       end
-      it 'house_numberが空の時でも登録できる' do
+      it 'house_numberが空の時では保存できない' do
         @how_to_buy.house_number = ""
         @how_to_buy.valid?
         expect(@how_to_buy.errors.full_messages).to include("House number can't be blank")
@@ -48,7 +48,7 @@ RSpec.describe HowToBuy, type: :model do
         @how_to_buy.valid?
         expect(@how_to_buy.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが11桁以上の時' do
+      it 'phone_numberが12桁以上の時' do
         @how_to_buy.phone_number = "1234567890123"
         @how_to_buy.valid?
         expect(@how_to_buy.errors.full_messages).to include("Phone number ハイフンなしで11桁以内で電話番号を入力してください(例)09033611156)")
