@@ -10,7 +10,7 @@ class HowToBuy
       with: /\A\d{3}[-]\d{4}\z/, message: "ハイフンありの7桁の郵便番号を入力してください"
     }
     validates :city, format: {
-      with: /\A[ぁ-んァ-ン一-龥]/, message: "全角ひらがな、カタカナ、漢字で市区町村を入力してください"
+      with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: "全角ひらがな、カタカナ、漢字で市区町村を入力してください"
     }
     validates :house_number
     validates :phone_number, format: {
