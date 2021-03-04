@@ -36,8 +36,7 @@ RSpec.describe Product, type: :model do
       it "priceが9999999円以下出なければ保存できない" do
         @product.price = 100000000
         @product.valid?
-        binding.pry
-        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@product.errors.full_messages).to include("")
       end
       it "priceが半角数字でなければ保存できない" do
         @product.price ="aaaaa"
