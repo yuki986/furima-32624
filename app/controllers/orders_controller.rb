@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     @how_to_buy = HowToBuy.new
     @product = Product.find(params[:product_id])
 
-    if current_user.id != @product.user.id || @product.order != nil
+    if current_user.id == @product.user.id || @product.order != nil
       redirect_to products_path
     end
   end
