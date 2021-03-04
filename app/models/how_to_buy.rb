@@ -16,14 +16,13 @@ class HowToBuy
     validates :phone_number, format: {
       with: /\A\d{10,11}\z/, message: "ハイフンなしで11桁以内で電話番号を入力してください(例)09033611156)"
     }
-  end
-  validates :prefecture_id, numericality: { other_than: 0 }
 
-  # orderテーブルのバリデーション
-  with_options presence: true do
+    # orderテーブルのバリデーション
     validates :user_id
     validates :product_id
+    # //orderテーブルのバリデーション
   end
+  validates :prefecture_id, numericality: { other_than: 0 }
 
   # データをテーブルで保存する処理
   def save
