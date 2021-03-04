@@ -19,6 +19,12 @@ class HowToBuy
   end
   validates :prefecture_id, numericality: { other_than: 0 }
 
+  # orderテーブルのバリデーション
+  with_options presence: true do
+    validates :user_id
+    validates :product_id
+  end
+
   # データをテーブルで保存する処理
   def save
     # 購入情報の保存
