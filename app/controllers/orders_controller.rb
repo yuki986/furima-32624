@@ -1,17 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: :index
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_product, only: [:index, :create]
+  before_action :set_conditional_branch,  only: [:index, :create]
   def index
     @how_to_buy = HowToBuy.new
-    @product = Product.find(params[:product_id])
-
-    if current_user.id == @product.user.id || @product.order != nil
-      redirect_to products_path
-    end
   end
 
   def create
     @how_to_buy = HowToBuy.new(how_to_buy_params)
-    @product = Product.find(params[:product_id])
     if @how_to_buy.valid?
       pay_product
       @how_to_buy.save
@@ -23,6 +19,14 @@ class OrdersController < ApplicationController
   end
 
   private
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+  def set_conditional_branch
+    if current_user.id == @product.user.id || @product.order != nil
+      redirect_to products_path
+    end
+  end
   def how_to_buy_params
     params.require(:how_to_buy).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], token: params[:token])
   end
