@@ -52,6 +52,11 @@ RSpec.describe HowToBuy, type: :model do
         @how_to_buy.valid?
         expect(@how_to_buy.errors.full_messages).to include("Prefecture must be other than 0")
       end
+      it 'tokenが空の時' do
+        @how_to_buy.token = ""
+        @how_to_buy.valid?
+        expect(@how_to_buy.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
