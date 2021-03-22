@@ -35,7 +35,7 @@
 - has_one   :order
 
 
-## orders テーブル
+## orders テーブル(商品購入履歴テーブル)
 | Column  | Type      | Options           |
 | ------- | --------- | ----------------- |
 | user    | reference | foreign_key: true |
